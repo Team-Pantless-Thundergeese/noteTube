@@ -253,3 +253,7 @@ input[type="text"], textarea {
   grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
   grid-gap: var(--grid-layout-gap);
 }
+
+.MuiCardMedia-root {
+  background-color: white;
+}
