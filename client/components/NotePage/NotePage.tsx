@@ -85,9 +85,7 @@ export default function NotePage() {
   return (
     <>
     <NavBar />
-    <HomepageContainer />
-
-    {/* <section className="notepage">
+    <section className="notepage">
       <SideBar
         handleNoteInput={handleNoteInput}
         youtubeLink={youtubeLink}
@@ -108,7 +106,7 @@ export default function NotePage() {
         linkInputted={linkInputted}
         noteSummary={noteSummary}
       />
-    </section> */}
+    </section>
     </>
   );
 }
