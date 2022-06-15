@@ -20,10 +20,10 @@ notesController.getUserNotes = (req, res, next) => {
     err: new ClientError('Provided userId parameter in URL is invalid')
   });
 
-  let text = `SELECT * FROM Notes WHERE Notes.user_id = 1`
+  let text = 'SELECT * FROM Notes WHERE Notes.user_id = 1';
   const params = [];
   if (req.query.videoLink) {
-    text += `\nAND notes.youtube_link = $1`
+    text += '\nAND notes.youtube_link = $1';
     params.push(req.query.videoLink);
   }
   const result = query(text, params).then(data => {

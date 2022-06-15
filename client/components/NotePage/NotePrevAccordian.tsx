@@ -26,5 +26,6 @@ export default function NotePrevAccordian({noteSummary, deleteNoteHandler,  upda
 
     return (
         <div>{notes}</div>
+        
     )
 }
