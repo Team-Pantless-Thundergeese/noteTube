@@ -1,4 +1,9 @@
 import React from 'react';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import {Routes, Route, useNavigate} from 'react-router-dom';
+
+
 
 function Click() {
     var navbar = document.querySelector(".main-nav ul");
@@ -6,6 +11,12 @@ function Click() {
   }
 
 export default function NavBar (){
+  const navigate = useNavigate();
+   
+  const navigateToLogin = ()=> {
+    navigate('/login');
+   }
+
     return (
         <header className="main-header">
         <a href="index.html" className="brand-logo">
@@ -20,6 +31,11 @@ export default function NavBar (){
         </div>
         <nav className="main-nav">
           <ul>
+            <li>
+            <Stack direction="row" spacing={2}>
+             <Button color="secondary"  onClick={navigateToLogin} >Login</Button>
+               </Stack>
+            </li>
             <li>
               <a href="#">Hello, User!</a>
             </li>

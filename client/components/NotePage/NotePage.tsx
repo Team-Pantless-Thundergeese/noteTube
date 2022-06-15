@@ -64,6 +64,17 @@ export default function NotePage() {
     setContent(val);
   };
 
+
+   /* Added Code JPA Adds Refresh of Video w/ Timestamp functionality */
+   const updateYoutubeLink = (val: string, time: number) => {
+    console.log('val from updateYoutube Link:')
+    setId(val)
+    setTime(time);
+    videoObject.seekTo(time)
+    videoObject.playVideo();
+   
+  }
+
   const handleNoteSummary = (val: Array<{}>) => {
     setNoteSummary((prevState) => [...prevState, val]);
   }
@@ -84,8 +95,17 @@ export default function NotePage() {
 
   return (
     <>
-    <NavBar />
-    <section className="notepage">
+      <section>
+      <NavBar />
+      <VideoSection
+        onPlayerReady={onPlayerReady}
+        onPlayerStateChange={onPlayerStateChange}
+        handleInputChange={handleInputChange}
+        id={id}
+        linkInputted={linkInputted}
+        noteSummary={noteSummary}
+        time= {time}
+      />
       <SideBar
         handleNoteInput={handleNoteInput}
         youtubeLink={youtubeLink}
@@ -96,15 +116,7 @@ export default function NotePage() {
         handleNoteSummary={handleNoteSummary}
         handleTitle={handleTitle}
         deleteNoteHandler={deleteNoteHandler}
-
-      />
-      <VideoSection
-        onPlayerReady={onPlayerReady}
-        onPlayerStateChange={onPlayerStateChange}
-        handleInputChange={handleInputChange}
-        id={id}
-        linkInputted={linkInputted}
-        noteSummary={noteSummary}
+        updateYoutubeLink = {updateYoutubeLink}
       />
     </section>
     </>
