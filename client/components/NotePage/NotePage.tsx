@@ -8,6 +8,7 @@ import YouTube, {
   YouTubeProps,
 } from "react-youtube";
 import getYouTubeID from "get-youtube-id";
+import HomepageContainer from "../../containers/HomepageContainer";
 
 export default function NotePage() {
   // State for testing - can delete if needed
@@ -84,7 +85,9 @@ export default function NotePage() {
   return (
     <>
     <NavBar />
-    <section className="notepage">
+    <HomepageContainer />
+
+    {/* <section className="notepage">
       <SideBar
         handleNoteInput={handleNoteInput}
         youtubeLink={youtubeLink}
@@ -105,7 +108,7 @@ export default function NotePage() {
         linkInputted={linkInputted}
         noteSummary={noteSummary}
       />
-    </section>
+    </section> */}
     </>
   );
 }

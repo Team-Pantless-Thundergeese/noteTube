@@ -63,6 +63,7 @@ body {
 
 #root {
   height: 100%;
+  overflow-y: scroll;
 }
 
 // Navbar
@@ -230,4 +231,26 @@ input[type="text"], textarea {
 
 .time {
 	float: right;
+}
+
+
+.card-container {
+  margin: 20px auto;
+  max-width: 80%;
+  display: grid;
+  --grid-layout-gap: 10px;
+  --grid-column-count: 4;
+  --grid-item--min-width: 300px;
+
+  /**
+   * Calculated values.
+   */
+  --gap-count: calc(var(--grid-column-count) - 1);
+  --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
+  --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
+  grid-gap: var(--grid-layout-gap);
+  overflow-y: scroll;
 }

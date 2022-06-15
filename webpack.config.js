@@ -55,6 +55,13 @@ export default {
         use: 'ts-loader',
         // Use babel-loader w/ @babel/preset-typescript & react?
         exclude: /node_modules/
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i, 
+        loader: 'file-loader',
+        // options: {
+        //   name: '/public/icons/[name].[ext]'
+        // }
       }
     ]
   },
