@@ -9,14 +9,15 @@ interface stateChangeProps {
     id: string,
     linkInputted: boolean
     noteSummary: Array<any>
+    time: number
 }
 
-export default function VideoSection ({ onPlayerReady, onPlayerStateChange, handleInputChange, id, linkInputted, noteSummary }: stateChangeProps){
+export default function VideoSection ({ onPlayerReady, onPlayerStateChange, handleInputChange, id, linkInputted, noteSummary, time}: stateChangeProps){
     
     return (
         <section>
             <NotesSummary noteSummary={noteSummary} />
-            <VideoDisplayBox id={id} handleInputChange={handleInputChange} onPlayerReady={onPlayerReady} onPlayerStateChange={onPlayerStateChange} linkInputted={linkInputted} />
+            <VideoDisplayBox id={id} handleInputChange={handleInputChange} onPlayerReady={onPlayerReady} onPlayerStateChange={onPlayerStateChange} linkInputted={linkInputted} time={time}/>
         </section>
     )
 }
