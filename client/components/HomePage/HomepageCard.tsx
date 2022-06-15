@@ -3,22 +3,24 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
-import sponge from './sponge.png'
 
+interface stateChangeProps {
+    _id: string,
+}
 
-export default function HomepageCard (){
+export default function HomepageCard ( { _id }: stateChangeProps){
     const onclick = () => {
         console.log('clicked')
     }
 
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 400 }}>
           <CardActionArea onClick={onclick}>
             {/* <img src="/sponge.png" alt="sponge" /> */}
             <CardMedia
               component="img"
-              height="345"
-              image={sponge}
+              height="220"
+              src={`${_id}`}
             //   alt="youtube vid"
             />
           </CardActionArea>
