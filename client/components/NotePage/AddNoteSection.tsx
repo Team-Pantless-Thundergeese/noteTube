@@ -9,6 +9,7 @@ interface stateChangeProps {
   noteSummary: Array<{}>;
   handleNoteSummary: (val: Array<{}>) => void;
   handleTitle: (val: string) => void;
+  
 }
 
 export default function AddNoteSection({ handleNoteInput, youtubeLink, time, content, title, noteSummary, handleNoteSummary, handleTitle}: stateChangeProps) {
