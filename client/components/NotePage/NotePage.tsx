@@ -117,14 +117,6 @@ export default function NotePage() {
         deleteNoteHandler={deleteNoteHandler}
         updateYoutubeLink = {updateYoutubeLink}
       />
-      <VideoSection
-        onPlayerReady={onPlayerReady}
-        onPlayerStateChange={onPlayerStateChange}
-        handleInputChange={handleInputChange}
-        id={id}
-        linkInputted={linkInputted}
-        noteSummary={noteSummary}
-      />
     </section>
     </>
   );
