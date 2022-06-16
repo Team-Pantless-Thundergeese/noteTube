@@ -58,6 +58,8 @@ app.use('/api/videos', videosRouter);
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
 }
+
+
 // Add session storage from express-session NOTE: secret should be an env variable
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
@@ -76,10 +78,10 @@ app.get('/auth/google',
 app.get( '/auth/google/callback',
   passport.authenticate( 'google', {
     successRedirect: '/',
-    failureRedirect: '/auth/google/failure'
+    failureRedirect: '/login'
   })
 );
-
+//app.get('/homepage', path.resolve(__dirname, '../client/index.html')));
 // Create a route to page the user will land on after they have been successfully authenticated
   // Calls the middleware function defined on top of this page to check if user isLoggedIn
 app.get('/protected', isLoggedIn, (req, res) => {

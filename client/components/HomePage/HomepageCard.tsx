@@ -36,12 +36,12 @@ export default function HomepageCard ( { _id, setId, getSpecificVideos }: stateC
               alt="youtube vid"
             />
             <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-            Some youtube video title idk
+          {/* <Typography gutterBottom variant="h6" component="div">
+            Title
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            maybe the creator????
-          </Typography>
+            Subtitle
+          </Typography> */}
         </CardContent>
           </CardActionArea>
         </Card>

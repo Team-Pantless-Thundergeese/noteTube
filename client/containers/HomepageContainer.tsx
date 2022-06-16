@@ -12,6 +12,7 @@ import TextField from '@mui/material/TextField';
 interface stateChangeProps {
     setId: (_id: string) => void
     getSpecificVideos: (val: string) => void
+    handleInputChange: (val: string) => void
 }
 
 export default function HomepageContainer({ setId, getSpecificVideos }: stateChangeProps){
@@ -43,7 +44,7 @@ export default function HomepageContainer({ setId, getSpecificVideos }: stateCha
                   maxWidth: '100%',
                 }}
             >
-                <TextField fullWidth label="paste a url" id="fullWidth" />
+                <TextField onSubmit={handleInputChange} fullWidth label="paste a url" id="fullWidth" />
             </Box>
             <div className="card-container">
                 {cards}
