@@ -33,7 +33,7 @@ export default function NavBar (){
           <ul>
             <li>
             <Stack direction="row" spacing={2}>
-             <Button color="secondary"  onClick={navigateToLogin} >Login</Button>
+             <Button color="secondary"  onClick={navigateToLogin}>Logout</Button>
                </Stack>
             </li>
             <li>

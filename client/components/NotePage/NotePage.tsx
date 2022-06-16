@@ -142,8 +142,8 @@ export default function NotePage() {
       <section>
       <NavBar />
       <Routes>
-        <Route path= "/" element={<Login/>} />
-        <Route path="/homepage" element={<HomepageContainer setId={setId} getSpecificVideos={getSpecificVideos}/>} />
+        <Route path= "/login" element={<Login/>} />
+        <Route path="/" element={<HomepageContainer setId={setId} getSpecificVideos={getSpecificVideos}/>} />
         <Route path="/notepage" element={ 
         <>
         <VideoSection
