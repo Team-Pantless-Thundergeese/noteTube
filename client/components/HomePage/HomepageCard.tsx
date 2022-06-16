@@ -13,13 +13,14 @@ import getYouTubeID from "get-youtube-id";
 interface stateChangeProps {
     _id: string,
     setId: (_id: string) => void
+    getSpecificVideos: (val: string) => void
 }
 
 //pass set props for userID videoId and view to this component
-export default function HomepageCard ( { _id, setId }: stateChangeProps){
+export default function HomepageCard ( { _id, setId, getSpecificVideos }: stateChangeProps){
     const onclick = () => {
       setId(_id)
-      
+      getSpecificVideos(_id)
     }
 
     return (

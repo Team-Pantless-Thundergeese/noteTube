@@ -62,6 +62,17 @@ export default function NotePage() {
       })
   };
 
+  const getSpecificVideos = (val: string) => {
+    fetch(`/api/notes/1/${val}`)
+      .then(response => response.json())
+      .then((data) => {
+        console.log(data.notes);
+        setNoteSummary(data.notes);
+      })
+      .catch((err: object) => {
+        console.log('Error:', err);
+      })
+  }
   // handles note button pause, sets time stamp in state
   const handleNoteInput = (val: string) => {
     if (!videoObject) return console.error("Target does not exist");
@@ -135,7 +146,7 @@ export default function NotePage() {
       <section>
       <NavBar />
       <Routes>
-        <Route path="/" element={<HomepageContainer setId={setId}/>} />
+        <Route path="/" element={<HomepageContainer setId={setId} getSpecificVideos={getSpecificVideos}/>} />
         <Route path="/notepage" element={ 
         <>
         <VideoSection
