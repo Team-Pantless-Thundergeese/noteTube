@@ -16,7 +16,7 @@ interface stateChangeProps {
 export default function VideoSection ({ onPlayerReady, onPlayerStateChange, handleInputChange, id, linkInputted, noteSummary, time}: stateChangeProps){
     
     return (
-        <section>
+        <section className='videosection'>
             <NotesSummary noteSummary={noteSummary} />
             <VideoDisplayBox id={id} handleInputChange={handleInputChange} onPlayerReady={onPlayerReady} onPlayerStateChange={onPlayerStateChange} linkInputted={linkInputted} time={time} />
         </section>

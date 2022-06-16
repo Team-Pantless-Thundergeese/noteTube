@@ -8,6 +8,7 @@ import YouTube, {
   YouTubeProps,
 } from "react-youtube";
 import getYouTubeID from "get-youtube-id";
+import HomepageContainer from "../../containers/HomepageContainer";
 
 export default function NotePage() {
   // State for testing - can delete if needed
@@ -126,7 +127,8 @@ export default function NotePage() {
       }
 
   return (
-    <div>
+    <>
+      <section>
       <NavBar />
       <VideoSection
         onPlayerReady={onPlayerReady}
@@ -150,6 +152,7 @@ export default function NotePage() {
         deleteNoteHandler={deleteNoteHandler}
         updateYoutubeLink = {updateYoutubeLink}
       />
-    </div>
+    </section>
+    </>
   );
 }
