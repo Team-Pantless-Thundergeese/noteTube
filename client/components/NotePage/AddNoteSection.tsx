@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+
 
 interface stateChangeProps {
   handleNoteInput: (val: string) => void;
@@ -24,11 +27,7 @@ export default function AddNoteSection({  handleNoteInput, youtubeLink, time, co
       youtubeLink,
       time,
     };
-<<<<<<< HEAD
     console.log(body);
-=======
-    console.log(body)
->>>>>>> dev
     const request = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -48,6 +47,14 @@ export default function AddNoteSection({  handleNoteInput, youtubeLink, time, co
 
   return (
     <section className="addNoteSection">
+      
+<Stack
+  direction="column"
+  justifyContent="center"
+  alignItems="flex-start"
+  spacing={2}
+>
+
       <input
         className="inputNoteTitle"
         onChange={(e: any) => handleTitle(e.target.value)}
@@ -63,9 +70,8 @@ export default function AddNoteSection({  handleNoteInput, youtubeLink, time, co
         }}
         placeholder='Note contents...'
       />
-      <button className="addNoteButton" onClick={handleClick}>
-        Add Note
-      </button>
+      <Button className="addNoteButton" color="primary" onClick={handleClick}>Add Note</Button>
+      </Stack>
       {/* clicking the button will save to NotesSummary */}
     </section>
   );
