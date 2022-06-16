@@ -17,7 +17,7 @@ export default function VideoSection ({ onPlayerReady, onPlayerStateChange, hand
     
     return (
         <section className='videosection'>
-            <NotesSummary noteSummary={noteSummary} />
+            {/* <NotesSummary noteSummary={noteSummary} /> */}
             <VideoDisplayBox id={id} handleInputChange={handleInputChange} onPlayerReady={onPlayerReady} onPlayerStateChange={onPlayerStateChange} linkInputted={linkInputted} time={time} />
         </section>
     )
