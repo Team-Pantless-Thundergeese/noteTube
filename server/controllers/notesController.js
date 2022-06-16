@@ -47,7 +47,7 @@ notesController.addNote = (req, res, next) => {
     youtubeLink: 'string',
     time: 'number'
   };
-  let properties = {};
+  // let properties = {};
   // try {
   //   properties = getBodyProps(req, required);
   // } catch (err) {
