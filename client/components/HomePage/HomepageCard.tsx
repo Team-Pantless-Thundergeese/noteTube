@@ -35,14 +35,14 @@ export default function HomepageCard ( { _id, setId, getSpecificVideos }: stateC
               src={`http://img.youtube.com/vi/${_id}/hqdefault.jpg`}
               alt="youtube vid"
             />
-            <CardContent>
-          {/* <Typography gutterBottom variant="h6" component="div">
+            {/* <CardContent>
+          <Typography gutterBottom variant="h6" component="div">
             Title
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Subtitle
-          </Typography> */}
-        </CardContent>
+          </Typography>
+        </CardContent> */}
           </CardActionArea>
         </Card>
       </Link>
