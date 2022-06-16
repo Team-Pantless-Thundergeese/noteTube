@@ -23,4 +23,10 @@ notesRouter.post('/deleteNotes', notesController.deleteNote, function(req, res) 
 });
 
 
+notesRouter.post('/editNotes', notesController.deleteNote, function(req, res) {
+  console.log('/deleteNotes Request Recieved', req.body);
+  res.status(200).json({ deleteStatus: 'successful' });
+});
+
+
 export default notesRouter;
