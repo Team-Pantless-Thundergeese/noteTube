@@ -72,4 +72,76 @@ notesController.addNote = (req, res, next) => {
   // return next(); // Move into query .then() or after awaiting query
 };
 
+
+
+
+notesController.deleteNote = (req, res, next) => {
+
+ 
+  const queryObj = {
+    text: 'DELETE from Notes WHERE _id = $1 AND user_id = $2',
+    values: [req.body.note_id, req.body.user_id]
+  };
+  query(queryObj)
+  .then(response => {
+  
+    console.log('Delete Notes Record Request Successful');
+    return next();
+  })
+  .catch(err => {
+    console.log(`Error trying to Delete Notes Record: ${err}`);
+    return next(err);
+  });
+
+  // return next(); // Move into query .then() or after awaiting query
+};
+
+
+notesController.getSpecificNotes = (req, res, next) => {
+console.log('youtube.com/watch?v='.concat(req.params.videoID));
+  const queryObj = {
+    text: 'SELECT * FROM Notes WHERE youtube_link = $1 AND user_id = $2', 
+    values: ['https://www.youtube.com/watch?v='.concat(req.params.videoID), req.params.userId ]
+  };
+  
+  query(queryObj).then(result => {
+    console.log(result.rows);
+    res.locals.videos = result.rows.map(video => video.youtube_link);
+    return next();
+  }).catch(err => {
+    console.log(`Error trying to Delete Notes Record: ${err}`);
+    return next(err);
+  });
+
+  // return next(); // Move into query .then() or after awaiting query
+};
+
+
 export default notesController;
+
+
+/*
+
+notesController.getSpecificVideos = (req, res, next) => {
+
+  const queryObj = {
+    text: 'SELECT * FROM Notes WHERE youtube_link = $1 AND user_id = $2', 
+    values: [req.params.videoID, req.params.userId ]
+  };
+  
+  query(queryObj).then(result => {
+    console.log(result);
+    res.locals.videos = result.rows.map(video => video.youtube_link);
+    return next();
+  }).catch(err => {
+    console.log(`Error trying to Delete Notes Record: ${err}`);
+    return next(err);
+  });
+ 
+};
+
+
+
+
+
+*/
