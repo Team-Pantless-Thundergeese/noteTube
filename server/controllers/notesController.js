@@ -117,10 +117,10 @@ console.log('youtube.com/watch?v='.concat(req.params.videoID));
 };
 
 
-export default notesController;
 
 
-/*
+
+
 
 notesController.getSpecificVideos = (req, res, next) => {
 
@@ -140,8 +140,7 @@ notesController.getSpecificVideos = (req, res, next) => {
  
 };
 
+export default notesController;
 
 
 
-
-*/
