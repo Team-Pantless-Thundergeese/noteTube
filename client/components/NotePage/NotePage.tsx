@@ -116,13 +116,13 @@ export default function NotePage() {
       headers: {
           'Content-Type': 'application/json',
       },
-      body: JSON.stringify({note_id, user_id})})
+      body: JSON.stringify({note_id, user_id, youtubeId})})
       .then(response => response.json())
       .then((data) => {
         console.log(data)
           
         /* Now Do another call to server to get updated data */
-          fetch(`/api/notes/1/${youtubeId}`)
+          fetch(`/api/notes/1/${getYouTubeID(youtubeId)}`)
           .then(response => response.json())
           .then((data) => {
             console.log(data.notes);
