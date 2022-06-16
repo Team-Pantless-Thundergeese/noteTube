@@ -64,8 +64,7 @@ export default function NotePage() {
 
   const getSpecificVideos = (val: string) => {
     setYoutubeLink(`https://www.youtube.com/watch?v=${val}`);
-    setId(getYouTubeID(val));
-    setLinkInputted(true);
+    
     fetch(`/api/notes/1/${val}`)
       .then(response => response.json())
       .then((data) => {
