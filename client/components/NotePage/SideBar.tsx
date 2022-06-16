@@ -11,13 +11,14 @@ interface stateChangeProps {
   noteSummary: Array<object>,
   handleNoteSummary: (val: Array<object>) => void,
   handleTitle: (val: string) => void,
-  deleteNoteHandler: ( note_id: string, user_id: number) => any
+  deleteNoteHandler: ( note_id: string, user_id: number, id: string) => any
   updateYoutubeLink :(val: string, time: number) => void
+  id: string
 }
 
 
 
-export default function SideBar({ handleNoteInput, youtubeLink, time, content, title, noteSummary, handleNoteSummary, handleTitle, deleteNoteHandler, updateYoutubeLink  }: stateChangeProps) {
+export default function SideBar({ handleNoteInput, id, youtubeLink, time, content, title, noteSummary, handleNoteSummary, handleTitle, deleteNoteHandler, updateYoutubeLink  }: stateChangeProps) {
   
 
 
@@ -33,11 +34,10 @@ export default function SideBar({ handleNoteInput, youtubeLink, time, content, t
         noteSummary={noteSummary}
         handleNoteSummary={handleNoteSummary}
         handleTitle={handleTitle}
-
       />
 
 
-      <NotePrevAccordian noteSummary={noteSummary} deleteNoteHandler={deleteNoteHandler} updateYoutubeLink={updateYoutubeLink}   time={time}/>
+      <NotePrevAccordian noteSummary={noteSummary} deleteNoteHandler={deleteNoteHandler} updateYoutubeLink={updateYoutubeLink} id={id}  time={time}/>
        
     </div>
 

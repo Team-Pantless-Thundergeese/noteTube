@@ -63,6 +63,9 @@ export default function NotePage() {
   };
 
   const getSpecificVideos = (val: string) => {
+    setYoutubeLink(`https://www.youtube.com/watch?v=${val}`);
+    setId(getYouTubeID(val));
+    setLinkInputted(true);
     fetch(`/api/notes/1/${val}`)
       .then(response => response.json())
       .then((data) => {
@@ -94,7 +97,6 @@ export default function NotePage() {
     setTime(time);
     videoObject.seekTo(time)
     videoObject.playVideo();
-   
   }
 
   
@@ -107,8 +109,8 @@ export default function NotePage() {
     setTitle(val);
   }
 
-  const deleteNoteHandler = (note_id: string, user_id: number) => {
-    console.log("delete called", note_id, user_id );
+  const deleteNoteHandler = (note_id: string, user_id: number, youtubeId: string ) => {
+    console.log("delete called", note_id, user_id, youtubeId );
     fetch('/api/notes/deleteNotes', {
       method: 'POST',
       headers: {
@@ -120,7 +122,7 @@ export default function NotePage() {
         console.log(data)
           
         /* Now Do another call to server to get updated data */
-          fetch('/api/notes/1')
+          fetch(`/api/notes/1/${youtubeId}`)
           .then(response => response.json())
           .then((data) => {
             console.log(data.notes);
@@ -129,12 +131,6 @@ export default function NotePage() {
           .catch((err: object) => {
             console.log('Error:', err);
           })
-
-
-
-
-
-
        
       })
       .catch((err: {}) => 
@@ -170,6 +166,7 @@ export default function NotePage() {
             handleTitle={handleTitle}
             deleteNoteHandler={deleteNoteHandler}
             updateYoutubeLink = {updateYoutubeLink}
+            id={id}
           />
           </>} />
       </Routes>

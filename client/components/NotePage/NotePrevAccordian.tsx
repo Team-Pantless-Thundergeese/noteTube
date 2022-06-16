@@ -3,14 +3,15 @@ import Note from './Note';
 
 interface stateChangeProps {
     noteSummary: Array<any>,
-    deleteNoteHandler: (note_id: string, user_id: number) => any
+    deleteNoteHandler: (note_id: string, user_id: number, id: string) => any
     updateYoutubeLink :(val: string, time: number) => void
     time: number
+    id: string
    
 }
   
   
-export default function NotePrevAccordian({noteSummary, deleteNoteHandler,  updateYoutubeLink }: stateChangeProps) {
+export default function NotePrevAccordian({id, noteSummary, deleteNoteHandler,  updateYoutubeLink }: stateChangeProps) {
 
     const notes = noteSummary.map((note) => {
         return <Note 
@@ -21,6 +22,7 @@ export default function NotePrevAccordian({noteSummary, deleteNoteHandler,  upda
           deleteNoteHandler={deleteNoteHandler}
           updateYoutubeLink={updateYoutubeLink}
           youtube_Link= {note.youtube_link}
+          id={id}
           />
       })
 
