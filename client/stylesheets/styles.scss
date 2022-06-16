@@ -144,3 +144,16 @@ header {
     display: flex;
   }
 }
+
+.itemconfiguration
+{
+		height:440px;
+		width:400px;
+		/* background-color:#CCC; */		
+        overflow-y:auto;
+		float:left;
+		position:relative;
+		margin-left:-5px;
+    padding-left: 30px;
+    padding-right: 30px;
+}

@@ -28,7 +28,9 @@ export default function NotePage() {
   const onPlayerStateChange: YouTubeProps["onStateChange"] = (
     e: YouTubeEvent<number>
   ) => {
+    console.log("on player State change triggered")
     console.log(e);
+
   };
 
   // once video loads, function fires and video is automatically paused for user to press play
@@ -38,6 +40,8 @@ export default function NotePage() {
     e.target.pauseVideo();
   };
 
+  
+
   const handleInputChange = (val: string) => {
     setYoutubeLink(val);
     setId(getYouTubeID(val));
@@ -45,7 +49,7 @@ export default function NotePage() {
     fetch('/api/notes/1')
       .then(response => response.json())
       .then((data) => {
-        console.log(data);
+        console.log(data.notes);
         setNoteSummary(data.notes);
       })
       .catch((err: object) => {
@@ -57,9 +61,12 @@ export default function NotePage() {
   const handleNoteInput = (val: string) => {
     if (!videoObject) return console.error("Target does not exist");
     videoObject.pauseVideo();
-    if (time === 0) {
+    setTime(Math.round(videoObject.getCurrentTime()));
+    console.log(time);
+    /*if (time === 0) {
       setTime(Math.round(videoObject.getCurrentTime()));
     }
+    */
     setContent(val);
   };
 
@@ -74,6 +81,8 @@ export default function NotePage() {
    
   }
 
+  
+
   const handleNoteSummary = (val: Array<{}>) => {
     setNoteSummary((prevState) => [...prevState, val]);
   }
@@ -82,11 +91,35 @@ export default function NotePage() {
     setTitle(val);
   }
 
-  const deleteNoteHandler = (val: number) => {
-    fetch('/api/notes')
+  const deleteNoteHandler = (note_id: string, user_id: number) => {
+    console.log("delete called", note_id, user_id );
+    fetch('/api/notes/deleteNotes', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({note_id, user_id})})
       .then(response => response.json())
       .then((data) => {
-        setNoteSummary(data.notes)
+        console.log(data)
+          
+        /* Now Do another call to server to get updated data */
+          fetch('/api/notes/1')
+          .then(response => response.json())
+          .then((data) => {
+            console.log(data.notes);
+            setNoteSummary(data.notes);
+          })
+          .catch((err: object) => {
+            console.log('Error:', err);
+          })
+
+
+
+
+
+
+       
       })
       .catch((err: {}) => 
         console.log('Error:', err));
@@ -99,6 +132,7 @@ export default function NotePage() {
         onPlayerReady={onPlayerReady}
         onPlayerStateChange={onPlayerStateChange}
         handleInputChange={handleInputChange}
+       
         id={id}
         linkInputted={linkInputted}
         noteSummary={noteSummary}

@@ -11,7 +11,7 @@ interface stateChangeProps {
   noteSummary: Array<object>,
   handleNoteSummary: (val: Array<object>) => void,
   handleTitle: (val: string) => void,
-  deleteNoteHandler: (val: number) => any
+  deleteNoteHandler: ( note_id: string, user_id: number) => any
   updateYoutubeLink :(val: string, time: number) => void
 }
 

@@ -3,7 +3,7 @@ import Note from './Note';
 
 interface stateChangeProps {
     noteSummary: Array<any>,
-    deleteNoteHandler: (val: number) => any
+    deleteNoteHandler: (note_id: string, user_id: number) => any
     updateYoutubeLink :(val: string, time: number) => void
     time: number
    
@@ -25,6 +25,6 @@ export default function NotePrevAccordian({noteSummary, deleteNoteHandler,  upda
       })
 
     return (
-        <div>{notes}</div>
+        <div className="itemconfiguration" >{notes}</div>
     )
 }

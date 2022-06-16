@@ -16,9 +16,7 @@ export default function AddNoteSection({ handleNoteInput, youtubeLink, time, con
   
   
   function handleClick() {
-    // console.log(timeStamp);
-    // console.log(contents);
-
+     
     const body = {
       title,
       content,
