@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import getYouTubeID from "get-youtube-id";
 
 interface stateChangeProps {
     title: string,
@@ -8,14 +9,15 @@ interface stateChangeProps {
     content: string,
     _id: number,
     youtube_Link: string,
-    deleteNoteHandler: (note_id: string, user_id: number) => any
+    deleteNoteHandler: (note_id: string, user_id: number, id: string) => any
     updateYoutubeLink: (val: string, time: number) => void
+    id: string
    
 }
 let contentLabel = "Content";
 let modeLabel = "Edit";
 
-export default function Note ({ title, time, content, _id, deleteNoteHandler,  youtube_Link, updateYoutubeLink }: stateChangeProps){
+export default function Note ({ id, title, time, content, _id, deleteNoteHandler,  youtube_Link, updateYoutubeLink }: stateChangeProps){
  
   const [hideContent, setHideContent] = useState(true);
   const [editMode, setMode] = useState("Edit");
@@ -52,7 +54,7 @@ const showLabel = ()=> {
              <Button color="primary" onClick={() => {setHideContent(prev => !prev); showLabel();}}>{contentLabel} 
              </Button>
             
-              <Button color="primary" onClick={()=>deleteNoteHandler(_id.toString(), 1)}>Delete
+              <Button color="primary" onClick={()=>deleteNoteHandler(_id.toString(), 1, `https://www.youtube.com/watch?v=${id}`)}>Delete
                </Button>
             
               <Button color="secondary" onClick={()=>updateYoutubeLink( youtube_Link.substr( youtube_Link.indexOf("=")+1), time)}>Timestamp

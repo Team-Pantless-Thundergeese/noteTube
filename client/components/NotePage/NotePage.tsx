@@ -63,6 +63,19 @@ export default function NotePage() {
       })
   };
 
+  const getSpecificVideos = (val: string) => {
+    setYoutubeLink(`https://www.youtube.com/watch?v=${val}`);
+    
+    fetch(`/api/notes/1/${val}`)
+      .then(response => response.json())
+      .then((data) => {
+        console.log(data.notes);
+        setNoteSummary(data.notes);
+      })
+      .catch((err: object) => {
+        console.log('Error:', err);
+      })
+  }
   // handles note button pause, sets time stamp in state
   const handleNoteInput = (val: string) => {
     if (!videoObject) return console.error("Target does not exist");
@@ -84,7 +97,6 @@ export default function NotePage() {
     setTime(time);
     videoObject.seekTo(time)
     videoObject.playVideo();
-   
   }
 
   
@@ -97,20 +109,20 @@ export default function NotePage() {
     setTitle(val);
   }
 
-  const deleteNoteHandler = (note_id: string, user_id: number) => {
-    console.log("delete called", note_id, user_id );
+  const deleteNoteHandler = (note_id: string, user_id: number, youtubeId: string ) => {
+    console.log("delete called", note_id, user_id, youtubeId );
     fetch('/api/notes/deleteNotes', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
       },
-      body: JSON.stringify({note_id, user_id})})
+      body: JSON.stringify({note_id, user_id, youtubeId})})
       .then(response => response.json())
       .then((data) => {
         console.log(data)
           
         /* Now Do another call to server to get updated data */
-          fetch('/api/notes/1')
+          fetch(`/api/notes/1/${getYouTubeID(youtubeId)}`)
           .then(response => response.json())
           .then((data) => {
             console.log(data.notes);
@@ -119,12 +131,6 @@ export default function NotePage() {
           .catch((err: object) => {
             console.log('Error:', err);
           })
-
-
-
-
-
-
        
       })
       .catch((err: {}) => 
@@ -137,7 +143,7 @@ export default function NotePage() {
       <NavBar />
       <Routes>
         <Route path= "/" element={<Login/>} />
-        <Route path="/homepage" element={<HomepageContainer setId={setId}/>} />
+        <Route path="/homepage" element={<HomepageContainer setId={setId} getSpecificVideos={getSpecificVideos}/>} />
         <Route path="/notepage" element={ 
         <>
         <VideoSection
@@ -161,6 +167,7 @@ export default function NotePage() {
             handleTitle={handleTitle}
             deleteNoteHandler={deleteNoteHandler}
             updateYoutubeLink = {updateYoutubeLink}
+            id={id}
           />
           </>} />
       </Routes>

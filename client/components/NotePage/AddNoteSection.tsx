@@ -12,7 +12,7 @@ interface stateChangeProps {
   
 }
 
-export default function AddNoteSection({ handleNoteInput, youtubeLink, time, content, title, noteSummary, handleNoteSummary, handleTitle}: stateChangeProps) {
+export default function AddNoteSection({  handleNoteInput, youtubeLink, time, content, title, noteSummary, handleNoteSummary, handleTitle}: stateChangeProps) {
   
   
   function handleClick() {
@@ -24,7 +24,11 @@ export default function AddNoteSection({ handleNoteInput, youtubeLink, time, con
       youtubeLink,
       time,
     };
+<<<<<<< HEAD
     console.log(body);
+=======
+    console.log(body)
+>>>>>>> dev
     const request = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
