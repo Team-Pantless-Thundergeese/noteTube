@@ -47,16 +47,16 @@ notesController.addNote = (req, res, next) => {
     youtubeLink: 'string',
     time: 'number'
   };
-  let properties = {};
-  try {
-    properties = getBodyProps(req, required);
-  } catch (err) {
-    return next({
-      msg: 'Invalid properties provided in request body',
-      err: err,
-      code: 400
-    });
-  }
+  // let properties = {};
+  // try {
+  //   properties = getBodyProps(req, required);
+  // } catch (err) {
+  //   return next({
+  //     msg: 'Invalid properties provided in request body',
+  //     err: err,
+  //     code: 400
+  //   });
+  // }
 
   const text = `
     INSERT INTO Notes (user_id, _id, title, youtube_link, content, time)
@@ -106,7 +106,7 @@ console.log('youtube.com/watch?v='.concat(req.params.videoID));
   
   query(queryObj).then(result => {
     console.log(result.rows);
-    res.locals.videos = result.rows.map(video => video.youtube_link);
+    res.locals.notes = result.rows;
     return next();
   }).catch(err => {
     console.log(`Error trying to Delete Notes Record: ${err}`);

@@ -9,6 +9,7 @@ import YouTube, {
 } from "react-youtube";
 import getYouTubeID from "get-youtube-id";
 import HomepageContainer from "../../containers/HomepageContainer";
+import { Route, Routes } from 'react-router-dom'
 
 export default function NotePage() {
   // State for testing - can delete if needed
@@ -20,6 +21,9 @@ export default function NotePage() {
   const [linkInputted, setLinkInputted] = useState(false);
   const [title, setTitle] = useState("");
   const [noteSummary, setNoteSummary] = useState([]);
+  const [view, setView] = useState('HomePage')
+  const [youtubeVid, setYoutubeVid] = useState('')
+
   
   useEffect(() => {
     // fetch data from database
@@ -47,7 +51,7 @@ export default function NotePage() {
     setYoutubeLink(val);
     setId(getYouTubeID(val));
     setLinkInputted(true);
-    fetch('/api/notes/1')
+    fetch(`/api/notes/1/${getYouTubeID(val)}`)
       .then(response => response.json())
       .then((data) => {
         console.log(data.notes);
@@ -130,28 +134,36 @@ export default function NotePage() {
     <>
       <section>
       <NavBar />
-      <VideoSection
-        onPlayerReady={onPlayerReady}
-        onPlayerStateChange={onPlayerStateChange}
-        handleInputChange={handleInputChange}
-       
-        id={id}
-        linkInputted={linkInputted}
-        noteSummary={noteSummary}
-        time= {time}
-      />
-      <SideBar
-        handleNoteInput={handleNoteInput}
-        youtubeLink={youtubeLink}
-        time={time}
-        content={content}
-        title={title}
-        noteSummary={noteSummary}
-        handleNoteSummary={handleNoteSummary}
-        handleTitle={handleTitle}
-        deleteNoteHandler={deleteNoteHandler}
-        updateYoutubeLink = {updateYoutubeLink}
-      />
+      <Routes>
+        <Route path="/" element={<HomepageContainer setId={setId}/>} />
+        <Route path="/notepage" element={ 
+        <>
+        <VideoSection
+            onPlayerReady={onPlayerReady}
+            onPlayerStateChange={onPlayerStateChange}
+            handleInputChange={handleInputChange}
+            id={id}
+            linkInputted={linkInputted}
+            noteSummary={noteSummary}
+            time= {time}
+          />
+          {console.log(id)}
+          <SideBar
+            handleNoteInput={handleNoteInput}
+            youtubeLink={youtubeLink}
+            time={time}
+            content={content}
+            title={title}
+            noteSummary={noteSummary}
+            handleNoteSummary={handleNoteSummary}
+            handleTitle={handleTitle}
+            deleteNoteHandler={deleteNoteHandler}
+            updateYoutubeLink = {updateYoutubeLink}
+          />
+          </>} />
+      </Routes>
+
+      
     </section>
     </>
   );
