@@ -106,7 +106,7 @@ console.log('youtube.com/watch?v='.concat(req.params.videoID));
   
   query(queryObj).then(result => {
     console.log(result.rows);
-    res.locals.videos = result.rows.map(video => video.youtube_link);
+    res.locals.notes = result.rows;
     return next();
   }).catch(err => {
     console.log(`Error trying to Delete Notes Record: ${err}`);
