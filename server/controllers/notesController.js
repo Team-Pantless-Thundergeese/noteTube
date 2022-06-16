@@ -48,15 +48,15 @@ notesController.addNote = (req, res, next) => {
     time: 'number'
   };
   let properties = {};
-  try {
-    properties = getBodyProps(req, required);
-  } catch (err) {
-    return next({
-      msg: 'Invalid properties provided in request body',
-      err: err,
-      code: 400
-    });
-  }
+  // try {
+  //   properties = getBodyProps(req, required);
+  // } catch (err) {
+  //   return next({
+  //     msg: 'Invalid properties provided in request body',
+  //     err: err,
+  //     code: 400
+  //   });
+  // }
 
   const text = `
     INSERT INTO Notes (user_id, _id, title, youtube_link, content, time)
