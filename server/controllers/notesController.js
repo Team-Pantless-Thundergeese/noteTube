@@ -63,7 +63,7 @@ notesController.addNote = (req, res, next) => {
     VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING *
     `;
-
+ 
   query(text, [1, uuidv4(), req.body.title, req.body.youtubeLink, req.body.content, req.body.time]).then(data => {
     res.locals.newNote = data.rows[0];
     return next();

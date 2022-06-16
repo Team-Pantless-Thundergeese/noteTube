@@ -24,13 +24,17 @@ export default {
       directory: path.resolve(__dirname, 'dist'),
       publicPath: '/'
     },
-    // headers: { 'Access-Control-Allow-Origin': '*' },
+    headers: { 'Access-Control-Allow-Origin': '*' },
     proxy: {
       '/api/**': {
         target: 'http://localhost:3000/',
         secure: false
       },
       '/assets/**': {
+        target: 'http://localhost:3000/',
+        secure: false
+      },
+      '/auth/**': {
         target: 'http://localhost:3000/',
         secure: false
       }

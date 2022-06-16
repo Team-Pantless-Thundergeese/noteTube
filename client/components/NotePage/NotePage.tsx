@@ -9,6 +9,7 @@ import YouTube, {
 } from "react-youtube";
 import getYouTubeID from "get-youtube-id";
 import HomepageContainer from "../../containers/HomepageContainer";
+import Login from "../../containers/Login";
 import { Route, Routes } from 'react-router-dom'
 
 export default function NotePage() {
@@ -135,7 +136,8 @@ export default function NotePage() {
       <section>
       <NavBar />
       <Routes>
-        <Route path="/" element={<HomepageContainer setId={setId}/>} />
+        <Route path= "/" element={<Login/>} />
+        <Route path="/homepage" element={<HomepageContainer setId={setId}/>} />
         <Route path="/notepage" element={ 
         <>
         <VideoSection

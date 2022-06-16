@@ -24,7 +24,7 @@ export default function AddNoteSection({ handleNoteInput, youtubeLink, time, con
       youtubeLink,
       time,
     };
-
+    console.log(body);
     const request = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
