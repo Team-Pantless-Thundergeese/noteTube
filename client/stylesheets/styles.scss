@@ -162,18 +162,6 @@ header {
   }
 }
 
-.itemconfiguration
-{
-		height:440px;
-		width:400px;
-		/* background-color:#CCC; */		
-        overflow-y:auto;
-		float:left;
-		position:relative;
-		margin-left:-5px;
-    padding-left: 30px;
-    padding-right: 30px;
-}
 /* Side bar */
 .sidebar {
   display: flex;
@@ -206,32 +194,20 @@ header {
 }
 
 .preview {
-	background-color: $blue;
-	color: $white;
-	padding: .5em;
-	height: 100%;
-
-  * {
-    cursor: pointer;
-  }
-  cursor: pointer;
+  background-color: #eee;
+  padding: 1em 1em;
+  margin: 1em 0;
 }
 
 .content {
 
 }
 
-button {
-	width: 30%;
-	padding: .5em;
-	margin: 1em auto;
-	border: none;
-	background-color: $blue;
-	color: $white;
-}
 
 .textArea {
 	margin-top: .5em;
+  width: 100%;
+  min-height: 200px;
 }
 
 input[type="text"], textarea {
@@ -240,6 +216,7 @@ input[type="text"], textarea {
 
 .inputNoteTitle {
 	padding: .5em;
+  width: 100%;
 }
 
 .time {

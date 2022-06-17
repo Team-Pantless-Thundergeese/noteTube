@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import VideoSection from "./VideoSection";
 import SideBar from "./SideBar";
 import NavBar from "../Global/NavBar";
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+
 import YouTube, {
   YouTubePlayer,
   YouTubeEvent,
@@ -139,23 +142,16 @@ export default function NotePage() {
 
   return (
     <>
-      <section>
       <NavBar />
+      <Container fixed>
       <Routes>
         <Route path= "/login" element={<Login/>} />
         <Route path="/" element={<HomepageContainer setId={setId} getSpecificVideos={getSpecificVideos}/>} />
         <Route path="/notepage" element={ 
         <>
-        <VideoSection
-            onPlayerReady={onPlayerReady}
-            onPlayerStateChange={onPlayerStateChange}
-            handleInputChange={handleInputChange}
-            id={id}
-            linkInputted={linkInputted}
-            noteSummary={noteSummary}
-            time= {time}
-          />
-          {console.log(id)}
+        <Grid container spacing={2}>
+
+          <Grid item xs={4}>
           <SideBar
             handleNoteInput={handleNoteInput}
             youtubeLink={youtubeLink}
@@ -169,11 +165,26 @@ export default function NotePage() {
             updateYoutubeLink = {updateYoutubeLink}
             id={id}
           />
+          </Grid>
+          <Grid item xs={8}>
+            <VideoSection
+              onPlayerReady={onPlayerReady}
+              onPlayerStateChange={onPlayerStateChange}
+              handleInputChange={handleInputChange}
+              id={id}
+              linkInputted={linkInputted}
+              noteSummary={noteSummary}
+              time= {time}
+            />
+          </Grid>
+
+        </Grid>
+
           </>} />
       </Routes>
 
       
-    </section>
+    </Container>
     </>
   );
 }
